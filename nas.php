@@ -116,18 +116,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -141,18 +130,7 @@
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
+                                
                             </div>
                         </li>
 
@@ -207,71 +185,7 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
+                        
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -317,7 +231,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">NAS Client</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-4" data-toggle="modal" data-target="#ModalAddNas"><i
                                 class="fas fa-plus fa-sm text-white-50"></i> Ajouter un NAS Client</a>
                     </div>
 
@@ -330,55 +244,7 @@
                                 <div class="card-body">
                                     <div class="table-responsive">
                                       
-                                    <!--Hello World-->
-                                        <?php
-                    // Include config file
-                                        require_once "config.php";
-                                        
-                                        // Attempt select query execution
-                                        $sql = "SELECT id,nasname,shortname,type,secret FROM nas";
-                                        if($result = mysqli_query($conn, $sql)){
-                                            if(mysqli_num_rows($result) > 0){
-                                                echo '<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">';
-                                                    echo "<thead>";
-                                                        echo "<tr>";
-                                                            echo "<th>#</th>";
-                                                            echo "<th>IP NAS</th>";
-                                                            echo "<th>Description</th>";
-                                                            echo "<th>Type</th>";
-                                                            echo "<th>Code Secret</th>";
-                                                            echo "<th>Action</th>";
-                                                        echo "</tr>";
-                                                    echo "</thead>";
-                                                    echo "<tbody>";
-                                                    while($row = mysqli_fetch_array($result)){
-                                                        echo "<tr>";
-                                                            echo "<td>" . $row['id'] . "</td>";
-                                                            echo "<td>" . $row['nasname'] . "</td>";
-                                                            echo "<td>" . $row['shortname'] . "</td>";
-                                                            echo "<td>" . $row['type'] . "</td>";
-                                                            echo "<td>" . $row['secret'] . "</td>";
-                                                            echo "<td class='text-center'>";
-                                                                echo '<a href="read.php?id='. $row['id'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><i class="fas fa-book-open"></i></a>';
-                                                                echo '<a href="update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><i class="fas fa-tools"></i></a>';
-                                                                echo '<a href="delete.php?id='. $row['id'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
-                                                            echo "</td>";
-                                                        echo "</tr>";
-                                                    }
-                                                    echo "</tbody>";                            
-                                                echo "</table>";
-                                                // Free result set
-                                                mysqli_free_result($result);
-                                            } else{
-                                                echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
-                                            }
-                                        } else{
-                                            echo "Oops! Something went wrong. Please try again later.";
-                                        }
-                    
-                                        // Close connection
-                                        mysqli_close($conn);
-                                        ?>
+                                   <?php include "tables/table_nas.php" ?>
 
                                 </div>
                             </div>
@@ -414,24 +280,98 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="ModalAddNas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true">X</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body" method="POST">
+                    <h5 class="text-center">Ajouter d'un Client NAS ( équipement réseaux qui donnera accès aux  clients users ) </h5>
+                    <form action="modal/nas/modal_nas_add.php" method="POST">
+                        <label>IP du NAS</label>
+                        <input type="text" id="ip_nas" name="ip_nas">
+                        <br>
+                        <label>Description du NAS</label>
+                        <input type="text" id="descr_nas" name="descr_nas" >
+                        <br>
+                        <label>Code secret partagé avec le NAS</label>
+                        <input type="text" id="mdp_nas" name="mdp_nas" >
+                        <br>
+                        <button type="submit">AJouter</button> 
+                    </form>
+
+                </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                    
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="ModalDeleteNas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Delete?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">X</span>
+                    </button>
+                </div>
+                <div class="modal-body">Voulez vous supprimer cet enregistrement</div>
+                <div class="modal-footer">
+                <?php echo '<a href="modal/nas/modal_nas_delete.php?id_nas='.urlencode(base64_encode($_GET['id_nas'])).'" class="mr-3 modal-link" title="Delete Record" data-toggle="tooltip"><button class="btn btn-warning">Supprimer</button></a>'; ?>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalUpdateNas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Update?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                       
+                    </button>
+                </div>
+                <div class="modal-body">
+                <?php         
+                        $id_nas=urldecode(base64_decode($_GET["idnas"]));          
+                        include "modal/nas/modal_nas_read.php";
+                        echo "nb:"; echo  $id_nas;
+                    ?>
+                    <form action="modal/nas/modal_nas_update.php" method="POST">
+                        <label></label>
+                       <input type="text" id="id" name="id" value="<?php echo $row_nas["id"]; ?>" hidden><br>
+                       <label>IP Nas</label> 
+                       <input type="text" id="nasname" name="nasname" value="<?php echo $row_nas["nasname"];?>"><br> 
+                       <label>Description du NAS</label>
+                       <input type="text" id="shortname" name="shortname" value="<?php echo $row_nas["shortname"]; ?>"><br> 
+                       <label>Code Secret partagé avec le NAS</label>
+                       <input type="text" id="secret" name="secret" value="<?php echo $row_nas["secret"]; ?>"><br> 
+                        <button type="submit" class="btn btn-primary">Modifier</button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="window.location.href = '/RadiusPanel/nas.php'">Annuler</button>
+                    </form>  
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -452,5 +392,57 @@
     <script src="js/demo/datatables-demo.js"></script>
 
 </body>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer le paramètre showModal de l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const showModal = urlParams.get('showModalAdd');
+
+            // Si le paramètre showModal est présent et égal à "true", afficher le modal
+            if (showModal === 'true') {
+                // Récupérer le modal par son ID et l'afficher
+                const modal = document.getElementById('ModalAddNas');
+                if (modal) {
+                    $(modal).modal('show'); // Utilisation de jQuery pour afficher le modal
+                }
+            }
+        });
+</script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer le paramètre showModal de l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const showModal = urlParams.get('showModalDelete');
+
+            // Si le paramètre showModal est présent et égal à "true", afficher le modal
+            if (showModal === 'true') {
+                // Récupérer le modal par son ID et l'afficher
+                const modal = document.getElementById('ModalDeleteNas');
+                if (modal) {
+                    $(modal).modal('show'); // Utilisation de jQuery pour afficher le modal
+                }
+            }
+        });
+</script>
+
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer le paramètre showModal de l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const showModalUpdateMac = urlParams.get('showModalUpdateNas');
+
+            // Si le paramètre showModal est présent et égal à "true", afficher le modal
+            if (showModalUpdateMac === 'true') {
+                // Récupérer le modal par son ID et l'afficher
+                const modal = document.getElementById('ModalUpdateNas');
+                if (modal) {
+                    $(modal).modal('show'); // Utilisation de jQuery pour afficher le modal
+                }
+            }
+        });
+</script>
 
 </html>

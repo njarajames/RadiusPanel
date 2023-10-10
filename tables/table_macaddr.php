@@ -22,8 +22,8 @@
                                                             echo "<td>" . $row['hostname'] . "</td>";
                                                             echo "<td>" . $row['macaddr'] . "</td>";
                                                             echo "<td>";
-                                                                echo '<a href="update.php?id='. $row['id'] .'" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-key"></span></a>';
-                                                                echo '<a href="/RadiusPanel/modal/mac/modal_mac_delete.php?id='.urlencode(base64_encode($row['id'])).'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                                                                echo '<a href="users.php?idmac='.urlencode(base64_encode($row['id'])).'&showModalUpdateMac=true" class="mr-3 modal-link" title="Update Record" data-toggle="tooltip"><span class="fa fa-key"></span></a>';
+                                                                echo '<a href="users.php?idmac='.urlencode(base64_encode($row['id'])).'&showModalDeleteMac=true" class="mr-3 modal-link" title="Delete Record" data-toggle="tooltip"><i class="fas fa-trash"></i></a>';
                                                             echo "</td>";
                                                         echo "</tr>";
                                                     }

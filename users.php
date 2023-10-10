@@ -289,7 +289,7 @@
             <!-- End of Footer -->
 
         </div>
-        <!-- End of Content Wrapper -->
+
 
     </div>
     <!-- End of Page Wrapper -->
@@ -301,23 +301,43 @@
 
     <!-- Modal-->
 
-    
-<div class="modal fade" id="exampleModal1" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalDeleteUser" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">      
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel1">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Vous voulez vraiment supprimer cet utilisateur ??</h5>
                     
                 </div>
                 <div class="modal-body">
                     <?php         
-                        $id_user=urldecode(base64_decode($_GET['id']));                    
+                    $id_user=urldecode(base64_decode($_GET['id']));                    
+                    include "modal/user/modal_user_read.php";
+                    ?>           
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="window.location.href = '/RadiusPanel/users.php'">Annuler</button>
+                    <?php echo '<a href="modal/user/modal_user_delete.php?id='.urlencode(base64_encode($id_user)).'&showModal=true" class="mr-3 modal-link" title="Delete Record" data-toggle="tooltip"><button class="btn btn-warning">Supprimer</button></a>'; ?>
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">Ready </h5>
+                    
+                </div>
+                <div class="modal-body">
+                    <?php         
+                       $id_user=urldecode(base64_decode($_GET['id']));                    
                         include "modal/user/modal_user_read.php";
                     ?>
                     <form action="modal/user/modal_user_update.php" method="POST">
-                       <input type="text" id="id"  name="id" value="<?php echo $row["id"]; ?>" readonly> 
-                       <input type="text" id="username" name="username" value="<?php echo $row["username"]; ?>"> 
-                       <input type="password" id="mdp" name="mdp" value="<?php echo $row["value"]; ?>"> 
+                       <input type="text" id="id"  name="id" value="<?php echo $row["id"]; ?>" readonly hidden><br> 
+                       <input type="text" id="username" name="username" value="<?php echo $row["username"]; ?>"><br> 
+                       <input type="password" id="mdp" name="mdp" value="<?php echo $row["value"]; ?>"><br><br> 
                         <button type="submit" class="btn btn-primary">Modifier</button>
                         <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="window.location.href = '/RadiusPanel/users.php'">Annuler</button>
                     </form>    
@@ -354,6 +374,36 @@
         </div>
 </div>
 
+<div class="modal fade" id="ModalUpdateMac" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                </div>
+                <div class="modal-body">
+                    <?php         
+                        $id_mac=urldecode(base64_decode($_GET['idmac']));          
+                        include "modal/mac/modal_mac_read.php";
+                        
+                    ?>
+                    <form action="modal/mac/modal_mac_update.php" method="POST">
+                        <label></label>
+                       <input type="text" id="id" name="id" value="<?php echo $row_mac["id"]; ?>" readonly ><br>
+                       <label>Hostname</label> 
+                       <input type="text" id="hostname" name="hostname" value="<?php echo $row_mac["hostname"];?>"><br> 
+                       <label>Adresse Mac</label>
+                       <input type="text" id="macaddr" name="macaddr" value="<?php echo $row_mac["macaddr"]; ?>"><br> 
+                        <button type="submit" class="btn btn-primary">Modifier</button>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="window.location.href = '/RadiusPanel/users.php'">Annuler</button>
+                    </form>    
+                    
+                    <p>Modal update Mac</p>
+                </div>
+               
+            </div>
+        </div>
+</div>
+
 <div class="modal fade" id="AddMacModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -371,33 +421,39 @@
                         <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="window.location.href = '/RadiusPanel/users.php'">Annuler</button>
                     </form>    
 
-                    <p>Modal add user</p>
+                    <p>Modal add Mac</p>
                 </div>
                 
             </div>
         </div>
 </div>
 
-<div class="modal fade" id="ModalDeleteUser" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">      
+
+<div class="modal fade" id="ModalDeleteMac" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">      
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Vous voulez vraiment supprimer ??</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Vous voulez vraiment supprimer cet Adresse Mac??</h5>
                     
                 </div>
                 <div class="modal-body">
-                    <?php         
-                    $id_user=urldecode(base64_decode($_GET['id']));                    
-                    include "modal/user/modal_user_read.php";
+                <?php         
+                    $id_mac=urldecode(base64_decode($_GET['idmac']));                    
+                    //include "modal/user/modal_user_read.php";
+                    echo $id_mac;
                     ?>           
                 </div>
                 <div class="modal-footer">
+                <?php echo '<a href="modal/mac/modal_mac_delete.php?idmac='.urlencode(base64_encode($id_mac)).'" class="mr-3 modal-link" title="Delete Record" data-toggle="tooltip"><button class="btn btn-warning">Supprimer</button></a>'; ?>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="window.location.href = '/RadiusPanel/users.php'">Annuler</button>
-                    <?php echo '<a href="modal/user/modal_user_delete.php?id='.urlencode(base64_encode($id_user)).'&showModal=true" class="mr-3 modal-link" title="Delete Record" data-toggle="tooltip"><button class="btn btn-warning">Supprimer</button></a>'; ?>
+                    <?php //echo '<a href="modal/user/modal_user_delete.php?id='.urlencode(base64_encode($id_user)).'&showModal=true" class="mr-3 modal-link" title="Delete Record" data-toggle="tooltip"><button class="btn btn-warning">Supprimer</button></a>'; ?>
                 </div>
             </div>
         </div>
 </div>
+
+
+
 
 
                     
@@ -443,6 +499,23 @@
         });
 </script>
 
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer le paramètre showModal de l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const showModal = urlParams.get('showModalDeleteMac');
+
+            // Si le paramètre showModal est présent et égal à "true", afficher le modal
+            if (showModal === 'true') {
+                // Récupérer le modal par son ID et l'afficher
+                const modal = document.getElementById('ModalDeleteMac');
+                if (modal) {
+                    $(modal).modal('show'); // Utilisation de jQuery pour afficher le modal
+                }
+            }
+        });
+</script>
+
 
 <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -454,6 +527,23 @@
             if (showModal === 'true') {
                 // Récupérer le modal par son ID et l'afficher
                 const modal = document.getElementById('exampleModal1');
+                if (modal) {
+                    $(modal).modal('show'); // Utilisation de jQuery pour afficher le modal
+                }
+            }
+        });
+</script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer le paramètre showModal de l'URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const showModalUpdateMac = urlParams.get('showModalUpdateMac');
+
+            // Si le paramètre showModal est présent et égal à "true", afficher le modal
+            if (showModalUpdateMac === 'true') {
+                // Récupérer le modal par son ID et l'afficher
+                const modal = document.getElementById('ModalUpdateMac');
                 if (modal) {
                     $(modal).modal('show'); // Utilisation de jQuery pour afficher le modal
                 }
