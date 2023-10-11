@@ -117,18 +117,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -140,21 +129,7 @@
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            
                         </li>
 
                         <!-- Nav Item - Alerts -->
@@ -249,11 +224,23 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Groupe RADIUS</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Créer un Groupe</a>
+                        <div class="d-sm-flex align-items-center mb-4">
+                    
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-4" data-toggle="modal" data-target="#AddGrpNameModal">
+                            <i class="fas fa-plus fa-sm text-white-50"></i> Créer un Groupe Clients</a>
+                            
+                        
+                            
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-4" data-toggle="modal" data-target="#AddModal">
+                            <i class="fas fa-plus fa-sm text-white-50"></i> Affecter un Utilisateur/NAS à un Groupe</a>
+                            
+                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-4" data-toggle="modal" data-target="#AddMacModal">
+                            <i class="fas fa-plus fa-sm text-white-50"></i> Créer une règle pour un Groupe</a>    
+                    </div>
+
                     </div>
                     
                     <div class="row">
@@ -261,28 +248,20 @@
                             <div class="card shadow mx-4" >
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <?php include "tables/table_grp_user_rad.php" ?>
+                                    <?php include "tables/table_grp_clients.php" ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="col">
-                            <div class="card shadow mx-4" >
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                    <?php include "tables/table_grp_nas_rad.php" ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                  
+                                       
                     </div>
                     <div class="row mt-4">
                         <div class="col">
                             <div class="card shadow mx-4" >
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                        <?php include "tables/table_grp_user_rad.php" ?>
+                                        <?php include "tables/table_grp_attribution.php" ?>
                                     </div>
                                 </div>
                             </div>
@@ -292,7 +271,7 @@
                             <div class="card shadow mx-4" >
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                    <?php include "tables/table_grp_nas_rad.php" ?>
+                                    <?php include "tables/table_grp_rules.php" ?>
                                     </div>
                                 </div>
                             </div>
@@ -326,24 +305,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

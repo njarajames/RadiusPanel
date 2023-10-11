@@ -4,7 +4,7 @@ require "config.php";
 // Fonction pour obtenir le nombre d'enregistrements dans la table "nas"
 function getRowCountInGroupNASTable($conn) {
     // Requête SQL pour compter le nombre d'enregistrements dans la table "nas"
-    $sql = "SELECT COUNT(*) as count FROM radgroup WHERE Type = 'NAS_Client' ";
+    $sql = "SELECT COUNT(*) as count FROM radgroup ";
 
     // Exécution de la requête
     $result = mysqli_query($conn, $sql);
