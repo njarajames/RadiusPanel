@@ -16,17 +16,23 @@
                         echo "nb:"; echo  $id_nas;
                     ?>
                     <form action="modal/nas/modal_nas_update.php" method="POST">
-                        <label></label>
+                       
                        <input type="text" id="id" name="id" value="<?php echo $row_nas["id"]; ?>" hidden><br>
                        <label>IP Nas</label> 
-                       <input type="text" id="nasname" name="nasname" value="<?php echo $row_nas["nasname"];?>"><br> 
+                       <input class="form-control" type="text" id="nasname" name="nasname" value="<?php echo $row_nas["nasname"];?>"/><br> 
+
                        <label>Description du NAS</label>
-                       <input type="text" id="shortname" name="shortname" value="<?php echo $row_nas["shortname"]; ?>"><br> 
+                       <input class="form-control" type="text" id="shortname" name="shortname" value="<?php echo $row_nas["shortname"]; ?>"><br> 
+
                        <label>Code Secret partagé avec le NAS</label>
-                       <input type="text" id="secret" name="secret" value="<?php echo $row_nas["secret"]; ?>"><br> 
+                       
+                       <input class="form-control" type="text" name="secret" value="<?php echo $row_nas["secret"]; ?>"><br>
+
                         <button type="submit" class="btn btn-primary">Modifier</button>
                         <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="window.location.href = '/RadiusPanel/nas.php'">Annuler</button>
-                    </form>  
+                    </form> 
+                    
+                    
                 </div>
                 
             </div>
@@ -66,14 +72,20 @@
                 <div class="modal-body" method="POST">
                     <h5 class="text-center">Ajouter d'un Client NAS ( équipement réseaux qui donnera accès aux  clients users ) </h5>
                     <form action="modal/nas/modal_nas_add.php" method="POST">
+                        
+                       
+                        <br>
+                        <label></label>
                         <label>IP du NAS</label>
-                        <input type="text" id="ip_nas" name="ip_nas">
+                        <input class="form-control" type="text" id="ip_nas" name="ip_nas">
                         <br>
                         <label>Description du NAS</label>
-                        <input type="text" id="descr_nas" name="descr_nas" >
+                        <input class="form-control" type="text" id="descr_nas" name="descr_nas" >
+                        
                         <br>
                         <label>Code secret partagé avec le NAS</label>
-                        <input type="text" id="mdp_nas" name="mdp_nas" >
+                        <input class="form-control" type="text" id="mdp_nas" name="mdp_nas">
+                       
                         <br>
                         <button type="submit">AJouter</button> 
                     </form>

@@ -20,23 +20,25 @@
 
                 <div class="mb-md-5 mt-md-4 pb-5">
 
-                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                <p class="text-white-50 mb-5">Please enter your login and password!</p>
+                <h2 class="fw-bold mb-2 text-uppercase">RadPan</h2>
+                <p class="text-white-50 mb-5">Connexion</p>
 
-                <div class="input-group mb-4">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
+                <form method="POST" action="login.php">
+                    <div class="input-group mb-4">
+                        
+                        <input type="text" class="form-control" id="username" name="username" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Veuillez entrer votre nom d'utilisateur ici">
+                    </div>
+                    
+                    <div class="input-group mb-4">
                 
-                <div class="input-group mb-4">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
-                    <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
+                        <input type="password" class="form-control" id="password" name="password" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Veuillez entrer votre mot de passe ici">
+                    </div>
 
 
-                <button class="btn btn-outline-primary btn-lg px-5" type="submit">Se connecter</button>
+                    <button class="btn btn-outline-primary btn-lg px-5" type="submit">Se connecter</button>
 
-                
+        
+                </form>
 
             </div>
             </div>
@@ -48,3 +50,48 @@
 <script lang="js" src="./dist/boostrap/js/bootstrap.js"></script> 
 <script lang="js" src="./dist/font-awesome/js/all.min.js"></script>   
 </html>
+
+<?php 
+
+require_once "config.php";
+
+$username = "";
+$password = ""; 
+
+    // Requête préparée pour vérifier les informations d'identification
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+    if($stmt = mysqli_prepare($conn, $sql)) {
+        /* Lier les variables à la requête préparée */
+        mysqli_stmt_bind_param($stmt, "ss", $_POST['username'], $_POST['password']);
+        /* Exécuter la requête */
+        if(mysqli_stmt_execute($stmt)) {
+            /* Obtenir le résultat */
+            $result = mysqli_stmt_get_result($stmt);
+            
+            /* Compter le nombre de lignes retournées par la requête */
+            if(mysqli_num_rows($result) > 0) {
+                /* Redirection si des lignes sont retournées (authentification réussie) */
+                session_start();
+                $_SESSION['logged_in'] = true;
+                $_SESSION['username'] = $_POST['username'];
+                header("Location: dashboard.php");
+                exit();
+            } else {
+                echo "Identifiants invalides.";
+            }
+        } else {
+            echo "Oops! Une erreur est survenue.";
+        }
+        /* Fermer la requête préparée */
+        mysqli_stmt_close($stmt);
+    }
+    }
+?>
+
+
+
+
